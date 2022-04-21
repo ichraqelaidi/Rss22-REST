@@ -1,23 +1,30 @@
 package fr.univrouen.rss22.model;
 
-import java.sql.Date;
-
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
 
-
+@XmlRootElement(name = "item")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 @Table(name = "item")
 public class Item {
 	@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int guid;
+	@XmlAttribute
+	private long guid;
+	@XmlElement
 	private String title;
-	private Date date;
+	@XmlElement
+	private String date;
 	
-	public int getGuid() {
+	public long getGuid() {
 		return guid;
 	}
-	public void setGuid(int guid) {
+	public void setGuid(long guid) {
 		this.guid = guid;
 	}
 	public String getTitle() {
@@ -26,13 +33,13 @@ public class Item {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	public Item(int guid, String title, Date date) {
+	public Item(int guid, String title, String date) {
 		super();
 		this.guid = guid;
 		this.title = title;

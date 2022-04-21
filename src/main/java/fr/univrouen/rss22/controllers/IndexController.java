@@ -1,24 +1,20 @@
 package fr.univrouen.rss22.controllers;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-
-@RestController
+@Controller
 public class IndexController {
 	@GetMapping("/")
-	public ModelAndView acceuil() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("acceuil.html");
-        return modelAndView;
+	public String acceuil() {
+		return "acceuil";
     }  
 	
 	@GetMapping("/help")
-	public ModelAndView help() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("help.html");
-        return modelAndView;
-    }  
+	public String help() {
+        return "help";
+    }
 }
 
