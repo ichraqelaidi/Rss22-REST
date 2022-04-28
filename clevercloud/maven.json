@@ -4,6 +4,6 @@
     "goal": "package"
   },
   "deploy": {
-    "goal": "mvn spring-boot:run"
+    "goal": "spring-boot:run"
   }
 }
