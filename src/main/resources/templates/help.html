@@ -66,14 +66,51 @@
 	        	<th scope="row">#</th>
 	            <td>/</td>
 	            <td>GET</td>
-	            <td>La page d’accueil - </td>
+	            <td>La page d’accueil  </td>
 	        </tr>
 	        <tr>
 	        	<th scope="row">#</th>
-	            <td></td>
-	            <td></td>
-	            <td></td>
+	            <td>/help</td>
+	            <td>GET</td>
+	            <td>Affiche la page contenant les informations d’aide</td>
 	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>/rss22/resume/xml</td>
+	            <td>GET</td>
+	            <td>Affiche la liste des articles stockés</td>
+	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>/rss22/resume/html</td>
+	            <td>GET</td>
+	            <td>Page HTML (ou XHTML)</td>
+	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>/rss22/resume/xml/{guid}</td>
+	            <td>GET</td>
+	            <td>Affiche le contenu complet de l’article dont l’identifiant est {guid}</td>
+	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>/rss22/html/{guid}</td>
+	            <td>GET</td>
+	            <td>Affiche le contenu complet de l’article dont l’identifiant est {guid}</td>
+	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>rss22/insert</td>
+	            <td>POST</td>
+	            <td>Le flux reçu est validé par le schéma XSD de définition rss22</td>
+	        </tr>
+	         <tr>
+	        	<th scope="row">#</th>
+	            <td>/rss22/delete/{guid}</td>
+	            <td>DELETE</td>
+	            <td>Suppression de l’article dont l’identifiant est {guid}</td>
+	        </tr>
+	        
 	    </tbody>
 	</table>
 	</div>

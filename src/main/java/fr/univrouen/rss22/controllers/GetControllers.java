@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
+import fr.univrouen.rss22.exception.ItemNotFoundException;
 import fr.univrouen.rss22.model.Item;
 import fr.univrouen.rss22.model.Items;
 import fr.univrouen.rss22.repository.ItemRepo;
@@ -50,23 +51,23 @@ public class GetControllers {
 	@GetMapping("/rss22/html/{guid}")
 	public String getItemHtml(@PathVariable("guid") long guid, Model model) {
 	    Item item = repo.findById(guid)
-	      .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + guid));
+	      .orElseThrow(() -> new ItemNotFoundException("Invalid item Id:" + guid));
 	    
 	    model.addAttribute("item", item);
 	    return "itemInfo";
 	}
 	
-	@RequestMapping(value = "/rss22/xml/{guid}", produces = MediaType.APPLICATION_XML_VALUE)
+	@RequestMapping(value = "/rss22/resume/xml/{guid}", produces = MediaType.APPLICATION_XML_VALUE)
 	public @ResponseBody Item getItemXML(@PathVariable("guid") long guid, Model model) {
 		Item item = repo.findById(guid)
-			      .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + guid));
+			      .orElseThrow(() -> new ItemNotFoundException("Invalid item Id:" + guid));
 		model.addAttribute("item", item);
 		return item;
 	}
 	@GetMapping("/rss22/delete/{guid}")
 	public String deleteUser(@PathVariable("guid") long guid, Model model) {
 	    Item item = repo.findById(guid)
-	      .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + guid));
+	      .orElseThrow(() -> new ItemNotFoundException("Invalid item Id:" + guid));
 	    repo.delete(item);
 	    return "redirect:/rss22/resume/html";
 	}
