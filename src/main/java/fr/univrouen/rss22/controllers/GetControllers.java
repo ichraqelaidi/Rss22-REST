@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
@@ -71,4 +72,15 @@ public class GetControllers {
 	    repo.delete(item);
 	    return "redirect:/rss22/resume/html";
 	}
+	 @RequestMapping(value = "/search")
+	 public String home(Item item, Model model,@RequestParam(name = "title") String title) {
+	  if(title!=null) {
+	   List<Item> list = repo.findByKeyword(title);
+	   model.addAttribute("items", list);
+	  }else {
+	  List<Item> list = repo.findAll();
+	  model.addAttribute("items", list);}
+	  return "listItem";
+	 }
+	
 }
